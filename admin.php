@@ -3,8 +3,8 @@
 require "connection.php";
 
 $sql = "SELECT * FROM `info`";
-$table = $conn->query($sql);
-$content = $table->fetch_assoc();
+$list = $conn->query($sql);
+$fetch = $list->fetch_assoc();
 
 
 ?>
@@ -36,22 +36,22 @@ $content = $table->fetch_assoc();
         <tbody>
             
 
-                <?php if($table->num_rows){?>
+                <?php if($list->num_rows){?>
 
                 <?php do{?>
                     <tr>
-                        <td><?php echo $content['email']?></td>
-                        <td><?php echo $content['username']?></td>
-                        <td><?php echo $content['password']?></td>
+                        <td><?php echo $fetch['email']?></td>
+                        <td><?php echo $fetch['username']?></td>
+                        <td><?php echo $fetch['password']?></td>
                         <td>
                         <form action="delete.php" method="post">
-                            <a href="edit.php?id= <?php echo $content['id']?>" class="editlink" id="editlink" >EDIT</a>
+                            <a href="edit.php?id= <?php echo $fetch['id']?>" class="editlink" id="editlink" >EDIT</a>
                             <button type="submit" name="delete" class="deletebutton" id="deletebutton"> DELETE</button>
-                            <input type="hidden" name="erase" value="<?php echo $content['id']?>">
+                            <input type="hidden" name="erase" value="<?php echo $fetch['id']?>">
                         </form>
                         </td>
                     </tr>
-                <?php }while($content = $table->fetch_assoc())?>
+                <?php }while($fetch = $list->fetch_assoc())?>
             
                     <?php }?>
         </tbody>
@@ -62,5 +62,9 @@ $content = $table->fetch_assoc();
 
 
 <script src="main.js"></script>
+
+
+
+
 </body>
 </html>

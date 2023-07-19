@@ -4,8 +4,8 @@ require "connection.php";
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM `info` WHERE id = '$id'";
-$table = $conn->query($sql);
-$content = $table->fetch_assoc();
+$list = $conn->query($sql);
+$fetch = $list->fetch_assoc();
 
 
 if(isset($_POST['editbutton'])){;
@@ -63,5 +63,7 @@ if(isset($_POST['editbutton'])){;
     </form>
 
     </div>
+
+
 </body>
 </html>

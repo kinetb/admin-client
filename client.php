@@ -3,8 +3,8 @@
 require "connection.php";
 
 $sql = "SELECT * FROM `info`";
-$table = $conn->query($sql);
-$content = $table->fetch_assoc();
+$list = $conn->query($sql);
+$fetch = $list->fetch_assoc();
 
 
 
@@ -25,7 +25,7 @@ $content = $table->fetch_assoc();
 <div class="logheader">
     <img src="image/profile.jpg" alt="" class="logo">
     </div>
-    <h1>Hello <?php echo $content['username']?></h1>
+    <h1>Hello <?php echo $fetch['username']?></h1>
 
     <a href="index.php" class="logoutadmin">LOG OUT</a>
 
